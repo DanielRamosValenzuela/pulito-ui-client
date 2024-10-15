@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-poppins: 'Poppins', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,14 +13,60 @@
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  body {
+    @apply antialiased;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-poppins), sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+    font-family: var(--font-poppins), sans-serif;
+    color: var(--foreground);
+  }
+
+  p {
+    font-family: var(--font-poppins), sans-serif;
+    color: var(--foreground);
+    margin-bottom: 1rem;
+  }
+
+  a {
+    @apply text-sky-500;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  a:hover {
+    color: var(--navy-blue);
+  }
+
+  button {
+    font-family: var(--font-poppins), sans-serif;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .btn-primary {
+    @apply bg-navyBlue text-white py-2 px-4 rounded transition;
+  }
+
+  .btn-primary:hover {
+    @apply bg-skyBlue;
+  }
+
+  .container {
+    @apply w-full max-w-screen-xl mx-auto px-4;
   }
 }
